@@ -72,12 +72,12 @@ class ProductManager {
 const products = new ProductManager;
 
 products.addProduct("producto prueba", "Este es un producto prueba", 200, "Sin imagen", "abc123", 25);
-products.addProduct("producto prueba2", "Este es un producto prueba", 200, "Sin imagen", "abc123", 24);
+// products.addProduct("producto prueba2", "Este es un producto prueba", 200, "Sin imagen", "abc123", 24);
 
 products.getProducts();
 
-products.getProductsById();
+//products.getProductsById();
 
-products.deleteProduct();
+//products.deleteProduct();
 
-products.updateProduct()
+//products.updateProduct()
