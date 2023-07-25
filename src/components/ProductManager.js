@@ -2,7 +2,7 @@ import {promises as fs} from "fs";
 
 export default class ProductManager {
     constructor() {
-        this.patch = "./products.txt";
+        this.path = "./products.txt";
         this.products = [];
         this.newId = 1;
     }
@@ -34,14 +34,14 @@ export default class ProductManager {
 
         this.products.push (newProduct);
         
-        await fs.writeFile(this.patch, JSON.stringify(this.products));
+        await fs.writeFile(this.path, JSON.stringify(this.products));
         } catch (error) {console.log(error)}
 
     }
 
     readProducts = async () => {
         try {
-            let respond = await fs.readFile(this.patch, "utf-8");
+            let respond = await fs.readFile(this.path, "utf-8");
             return JSON.parse(respond);
         } catch (error) {
             console.log(error);
@@ -76,20 +76,11 @@ export default class ProductManager {
         let respond3 = await this.readProducts();
         let productFilter = respond3.filter(products => products.id != id)
 
-        await fs.writeFile(this.patch, JSON.stringify(productFilter));
+        await fs.writeFile(this.path, JSON.stringify(productFilter));
 
         console.log("Producto eliminado");
     }
 
-
-    // updateProduct = async ({id, ...product}) => {
-    //     await this.deleteProduct(id);
-    //     let oldProduct = await this.readProducts()
-
-    //     let modifiedProducts = [{id, ...product}, ...oldProduct]
-
-    //     await fs.writeFile(this.patch, JSON.stringify(modifiedProducts));
-    // }
 
     updateProduct = async (id, title, description, price, thumbnail, code, stock) => {
         try {
